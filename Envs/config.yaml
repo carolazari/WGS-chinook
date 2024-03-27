@@ -1,6 +1,6 @@
 
 # path to the genome (not used in workflow, but we could have...)
-genome_path: "data/genome/genome.fasta"
+genome_path: "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna"
 
 # path to file with information about samples
 sample_info: "Snakemake-Example/sample-info.tsv"
