@@ -289,36 +289,3 @@ rule select_indels:
     " -O {output} > {log} 2>&1 " 
 
 
-
-# filter the indels according to the recommendations at:
-# https://gatk.broadinstitute.org/hc/en-us/articles/360035531112--How-to-Filter-variants-either-with-VQSR-or-by-hard-filtering#2
-rule hard_filter_indels:
-  input:
-    vcf="results/hard_filtering/indels/{chromo}.vcf.gz"
-  output:
-    vcf="results/hard_filtering/indels-filtered/{chromo}.vcf.gz"
-  conda:
-    "envs/gatk.yaml"
-  log:
-    "results/logs/hard_filter_indels/{chromo}.log"
-  params:
-    filters=config["params"]["gatk"]["VariantFiltration"]["indels"]
-  shell:
-    "gatk VariantFiltration "
-    " -V {input.vcf} "
-    " {params.filters}      "
-    " -O {output} > {log} 2>&1 "
-
-
-
-rule concat_vcfs:
-  input:
-    vcfs=expand("results/chromo_vcfs/{c}.vcf.gz", c=CHROMOS)
-  output:
-    vcf="results/vcf/all.vcf.gz"
-  conda:
-    "envs/bcftools.yaml"
-  log:
-    "results/concat_vcfs/all.log"
-  shell:
-    "bcftools concat -n {input.vcfs} > {output.vcf} 2> {log} "
