@@ -157,7 +157,7 @@ rule map_reads:
   input:
     r1="results/trimmed/{sample}_R1.fastq.gz",
     r2="results/trimmed/{sample}_R2.fastq.gz",
-    genome="data/genome/genome.fasta",
+    genome="Reference/chinook.fasta",
     idx=multiext("Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac")
   output:
     "results/bam/{sample}.bam"
