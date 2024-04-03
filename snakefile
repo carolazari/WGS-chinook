@@ -125,8 +125,7 @@ rule bwa_index:
 
 rule trim_reads:
   input:
-    r1="fastq/{sample}_R1.fastq.gz",
-    r2="fastq/{sample}_R2.fastq.gz",
+    unpack(get_fastqs),
   output:
     r1="results/trimmed/{sample}_R1.fastq.gz",
     r2="results/trimmed/{sample}_R2.fastq.gz",
