@@ -28,7 +28,7 @@ configfile: "config.yaml"
 
 
 ### Get the sample info table read into a pandas data frame
-sample_table=pd.read_table(config["units_run1"], dtype="str").set_index(
+sample_table=pd.read_table(config["units"], dtype="str").set_index(
     "sample", drop=False
 )
 
@@ -89,7 +89,7 @@ rule genome_faidx:
   output:
     "Reference/chinook.fasta.fai",
   conda:
-    "Snakemake/Envs/bwa2sam.yaml"
+    "Envs/bwa2sam.yaml"
   log:
     "results/logs/genome_faidx.log",
   shell:
@@ -102,7 +102,7 @@ rule genome_dict:
   output:
     "Reference/chinook.dict",
   conda:
-    "Snakemake/Envs/bwa2sam.yaml"
+    "Envs/bwa2sam.yaml"
   log:
     "results/logs/genome_dict.log",
   shell:
@@ -115,7 +115,7 @@ rule bwa_index:
   output:
     multiext("Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac"),
   conda:
-    "Snakemake/Envs/bwa2sam.yaml"
+    "Envs/bwa2sam.yaml"
   log:
     out="results/logs/bwa_index/bwa_index.log",
     err="results/logs/bwa_index/bwa_index.err"
@@ -135,7 +135,7 @@ rule trim_reads:
     html="results/qc/fastp/{sample}.html",
     json="results/qc/fastp/{sample}.json"
   conda:
-    "Snakemake/Envs/fastp.yaml"
+    "Envs/fastp.yaml"
   log:
     out="results/logs/trim_reads/{sample}.log",
     err="results/logs/trim_reads/{sample}.err",
@@ -162,7 +162,7 @@ rule map_reads:
   output:
     "results/bam/{sample}.bam"
   conda:
-    "Snakemake/Envs/bwa2sam.yaml"
+    "Envs/bwa2sam.yaml"
   log:
     "results/logs/map_reads/{sample}.log"
   threads: 2
@@ -187,7 +187,7 @@ rule mark_duplicates:
     bai="results/mkdup/{sample}.bai",
     metrics="results/qc/mkdup_metrics/{sample}.metrics"
   conda:
-    "Snakemake/Envs/gatk.yaml"
+    "Envs/gatk.yaml"
   log:
     "results/logs/mark_duplicates/{sample}.log"
   shell:
@@ -211,7 +211,7 @@ rule make_gvcfs_by_chromo:
     gvcf="results/gvcf/{chromo}/{sample}.g.vcf.gz",
     idx="results/gvcf/{chromo}/{sample}.g.vcf.gz.tbi",
   conda:
-    "Snakemake/Envs/gatk.yaml"
+    "Envs/gatk.yaml"
   log:
     "results/logs/make_gvcfs_by_chromo/{chromo}/{sample}.log"
   params:
@@ -235,7 +235,7 @@ rule import_genomics_db_by_chromo:
   output:
     gdb=directory("results/genomics_db/{chromo}")
   conda:
-    "Snakemake/Envs/gatk.yaml"
+    "Envs/gatk.yaml"
   log:
     "results/logs/import_genomics_db_by_chromo/{chromo}.log"
   params:
@@ -260,7 +260,7 @@ rule vcf_from_gdb_by_chromo:
     vcf="results/chromo_vcfs/{chromo}.vcf.gz",
     idx="results/chromo_vcfs/{chromo}.vcf.gz.tbi",
   conda:
-    "Snakemake/Envs/gatk.yaml"
+    "Envs/gatk.yaml"
   log:
     "results/logs/vcf_from_gdb_by_chromo/{chromo}.txt"
   shell:
@@ -279,7 +279,7 @@ rule select_indels:
   output:
     "results/hard_filtering/indels/{chromo}.vcf.gz"
   conda:
-    "Snakemake/Envs/gatk.yaml"
+    "Envs/gatk.yaml"
   log:
     "results/logs/select_indels/{chromo}.log"
   shell:
@@ -295,7 +295,7 @@ rule concat_vcfs:
   output:
     vcf="results/vcf/all.vcf.gz"
   conda:
-    "Snakemake/Envs/bcftools.yaml"
+    "Envs/bcftools.yaml"
   log:
     "results/concat_vcfs/all.log"
   shell:
