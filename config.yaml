@@ -3,7 +3,7 @@
 genome_path: "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna"
 
 # path to file with information about samples
-sample_info: "Snakemake/config/units_run1.tsv"
+units: "units.tsv"
 
 # Put the list of chromosomes we want to do here
 #for the first run I just included some of them

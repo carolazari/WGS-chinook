@@ -81,8 +81,6 @@ rule all:
 
 
 
-
-
 rule genome_faidx:
   input:
     "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
@@ -227,8 +225,6 @@ rule make_gvcfs_by_chromo:
     " -ERC GVCF > {log} 2> {log} "
 
 
-
-
 rule import_genomics_db_by_chromo:
   input:
     gvcfs=expand("results/gvcf/{{chromo}}/{s}.g.vcf.gz", s=SAMPLES)
@@ -246,8 +242,6 @@ rule import_genomics_db_by_chromo:
     "  $VS  "
     "  --genomicsdb-workspace-path {output.gdb} "
     "  -L  {wildcards.chromo} 2> {log} "
-
-
 
 
 rule vcf_from_gdb_by_chromo:
@@ -268,7 +262,6 @@ rule vcf_from_gdb_by_chromo:
     "  -R {input.ref}  "
     "  -V gendb://{input.gdb} "
     "  -O {output.vcf} 2> {log} "
-
 
 
 # break out just the indels
