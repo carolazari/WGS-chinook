@@ -1,0 +1,10 @@
+# cluster_config.yml - cluster configuration
+__default__:
+    account: clazari@ucsc.edu
+    partition: short
+    time: 01:00:00 # time limit for each job
+    nodes: 1
+    ntasks-per-node: 14 #Request n cores be allocated per node.
+    chdir: /directory/to/change/to
+    output: a_name_for_my_job-%j.out
+    error: a_name_for_my_job-%j.err
