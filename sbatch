@@ -3,7 +3,7 @@
 #SBATCH --job-name=chinook_run1
 #
 # Partition - This is the queue it goes in:
-#SBATCH --partition=short
+#SBATCH --partition=Instruction
 #
 # Where to send email (optional)
 #SBATCH --mail-user=clazari@ucsc.edu
