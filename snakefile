@@ -77,7 +77,9 @@ def get_read_group(wildcards):
 # rule to ask for results/vcf/all.vcf.gz
 rule all:
   input: 
-    expand("results/hard_filtering/indels-filtered/{chromo}.vcf.gz", chromo=CHROMOS)
+  "results/vcf/all.vcf.gz"
+    
+    #expand("results/hard_filtering/indels-filtered/{chromo}.vcf.gz", chromo=CHROMOS)
 
 
 
