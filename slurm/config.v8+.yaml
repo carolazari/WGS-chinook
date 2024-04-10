@@ -1,5 +1,5 @@
 
-executor: cluster-generic
+executor: slurm
 cluster-generic-submit-cmd:
   mkdir -p results/slurm_logs/{rule} &&
   sbatch
