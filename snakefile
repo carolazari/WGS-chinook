@@ -49,8 +49,8 @@ CHROMOS=config["chromos"]
 # define a function to get the fastq path from the sample_table. This
 # returns it as a dict, so we need to unpack it in the rule
 def get_fastqs(wildcards):
-  fq1=sample_table[ wildcards.sample, "fq1" ]
-  fq2=sample_table[ wildcards.sample, "fq2" ]
+  fq1=sample_table.loc[ wildcards.sample, "fq1" ]
+  fq2=sample_table,loc[ wildcards.sample, "fq2" ]
   return {"r1": fq1, "r2": fq2 }
 
 # define a function for getting the read group information
