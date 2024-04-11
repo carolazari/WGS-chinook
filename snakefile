@@ -48,6 +48,7 @@ CHROMOS=config["chromos"]
 ### Input Functins that use the tabular sample_info
 # define a function to get the fastq path from the sample_table. This
 # returns it as a dict, so we need to unpack it in the rule
+#df.loc (in this case sample_table.loc) access a group of rows/columns by a label
 def get_fastqs(wildcards):
   fq1=sample_table.loc[ wildcards.sample, "fq1" ]
   fq2=sample_table.loc[ wildcards.sample, "fq2" ]
@@ -127,7 +128,7 @@ rule bwa_index:
 
 rule trim_reads:
   input:
-    unpack(get_fastqs),
+    unpack(get_fastqs)
   output:
     r1="results/trimmed/{sample}_R1.fastq.gz",
     r2="results/trimmed/{sample}_R2.fastq.gz",
