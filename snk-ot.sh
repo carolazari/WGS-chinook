@@ -9,6 +9,7 @@
 #SBATCH --nodes=2
 
 ##commands to run
+conda init
 conda activate snakemake-8.5.3
 module load bio/samtools
 module load bio/bcftools
