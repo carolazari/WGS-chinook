@@ -8,7 +8,7 @@
 #SBATCH -t 10:00:00
 #SBATCH --nodes=2
 #SBATCH --cpus-per-task=2
-#SBATCH --mem=20G
+#SBATCH --mem=48G
 
 ##commands to run
 
@@ -16,5 +16,5 @@ module load bio/samtools
 module load bio/bcftools
 module load aligners/bwa-mem2
 snakemake --unlock
-snakemake -p results/vcf/all.vcf.gz --rerun-incomplete --cores 2 --latency-wait 30
+snakemake -p results/vcf/all.vcf.gz --rerun-incomplete --cores 2
 
