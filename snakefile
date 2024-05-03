@@ -86,9 +86,9 @@ rule all:
 
 rule genome_faidx:
   input:
-    "Reference/chinook.fasta",
+    "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
   output:
-    "Reference/chinook.fasta.fai",
+    "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna.fai",
   conda:
     "Envs/bwa2sam.yaml"
   log:
@@ -99,7 +99,7 @@ rule genome_faidx:
 
 rule genome_dict:
   input:
-    "Reference/chinook.fasta",
+    "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
   output:
     "Reference/chinook.dict",
   conda:
@@ -112,9 +112,9 @@ rule genome_dict:
 
 rule bwa_index:
   input:
-    "Reference/chinook.fasta"
+    "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna"
   output:
-    multiext("Reference/chinook.fasta", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac"),
+    multiext("Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac"),
   conda:
     "Envs/bwa2sam.yaml"
   log:
@@ -157,8 +157,8 @@ rule map_reads:
   input:
     r1="results/trimmed/{sample}_R1.fastq.gz",
     r2="results/trimmed/{sample}_R2.fastq.gz",
-    genome="Reference/chinook.fasta",
-    idx=multiext("Reference/chinook.fasta", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac")
+    genome="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
+    idx=multiext("Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna", ".0123", ".amb", ".ann", ".bwt.2bit.64", ".pac")
   output:
     "results/bam/{sample}.bam"
   conda:
@@ -204,9 +204,9 @@ rule make_gvcfs_by_chromo:
   input:
     bam="results/mkdup/{sample}.bam",
     bai="results/mkdup/{sample}.bai",
-    ref="Reference/chinook.fasta",
+    ref="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
     idx="Reference/chinook.dict",
-    fai="Reference/chinook.fasta.fai"
+    fai="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna.fai"
   output:
     gvcf="results/gvcf/{chromo}/{sample}.g.vcf.gz",
     idx="results/gvcf/{chromo}/{sample}.g.vcf.gz.tbi",
@@ -249,8 +249,8 @@ rule import_genomics_db_by_chromo:
 rule vcf_from_gdb_by_chromo:
   input:
     gdb="results/genomics_db/{chromo}",
-    ref="Reference/chinook.fasta",
-    fai="Reference/chinook.fasta.fai",
+    ref="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
+    fai="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna.fai",
     idx="Reference/chinook.dict",
   output:
     vcf="results/chromo_vcfs/{chromo}.vcf.gz",
