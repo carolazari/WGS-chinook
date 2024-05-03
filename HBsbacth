@@ -1,0 +1,20 @@
+#!/bin/bash
+#SCBATH --job-name=snk-chinook
+#SBATCH --output=snk-chinook.txt
+
+#SBATCH --mail-user=clazari@ucsc.edu
+#SBATCH --mail-type=ALL
+#SBATCH -p 128x24
+#SBATCH -t 10:00:00
+#SBATCH --nodes=2
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=90G
+
+##commands to run
+
+module load samtools
+module load bcftools
+module load bwa-mem2
+snakemake --unlock
+snakemake -p results/vcf/all.vcf.gz --rerun-incomplete --cores 2
+
