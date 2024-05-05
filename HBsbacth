@@ -6,8 +6,9 @@
 #SBATCH --mail-type=ALL
 #SBATCH -p 128x24
 #SBATCH -t 10:00:00
-#SBATCH --nodes=2
-#SBATCH --cpus-per-task=2
+#SBATCH --nodes=all
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=4
 #SBATCH --mem=90G
 
 ##commands to run
