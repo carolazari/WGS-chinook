@@ -11,9 +11,9 @@ cluster-generic-submit-cmd:
     --output=results/slurm_logs/{rule}/{rule}-%j-{wildcards}.out
     --error=results/slurm_logs/{rule}/{rule}-%j-{wildcards}.err
     --parsable
-cluster-generic-status-cmd: status-sacct-robust.sh
-cluster-generic-cancel-cmd: scancel
-cluster-generic-cancel-nargs: 400
+#cluster-generic-status-cmd: status-sacct-robust.sh
+#cluster-generic-cancel-cmd: scancel
+#cluster-generic-cancel-nargs: 400
 # warning, time here is very small.  It works for the small
 # example data set, but should be increased for production jobs
 default-resources:
