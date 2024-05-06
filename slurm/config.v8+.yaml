@@ -3,7 +3,7 @@ executor: slurm
 cluster-generic-submit-cmd:
   mkdir -p results/slurm_logs/{rule} &&
   sbatch
-    --partition=Instruction
+    --partition=standard
     --cpus-per-task={threads}
     --mem={resources.mem_mb}
     --time={resources.time}
