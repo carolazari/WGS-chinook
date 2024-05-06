@@ -101,7 +101,7 @@ rule genome_dict:
   input:
     "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
   output:
-    "Reference/chinook.dict",
+    "Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.dict",
   conda:
     "Envs/bwa2sam.yaml"
   log:
@@ -205,7 +205,7 @@ rule make_gvcfs_by_chromo:
     bam="results/mkdup/{sample}.bam",
     bai="results/mkdup/{sample}.bai",
     ref="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
-    idx="Reference/chinook.dict",
+    idx="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.dict",
     fai="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna.fai"
   output:
     gvcf="results/gvcf/{chromo}/{sample}.g.vcf.gz",
@@ -251,7 +251,7 @@ rule vcf_from_gdb_by_chromo:
     gdb="results/genomics_db/{chromo}",
     ref="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna",
     fai="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna.fai",
-    idx="Reference/chinook.dict",
+    idx="Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.dict",
   output:
     vcf="results/chromo_vcfs/{chromo}.vcf.gz",
     idx="results/chromo_vcfs/{chromo}.vcf.gz.tbi",
