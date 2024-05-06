@@ -1,7 +1,7 @@
-units: .test/config/units.tsv
-chromosomes: .test/config/chromosomes.tsv
-scaffold_groups: .test/config/scaffold_groups.tsv
-scatter_intervals_file: .test/config/scatters_1200000.tsv
+units: units.tsv
+chromosomes: config/chromosomes.tsv
+scaffold_groups: config/scaffold_groups.tsv
+scatter_intervals_file: nz-arg-wr-chinook/scatters_5000000.tsv
 
 # this file is only needed when treating different samples
 # as different species, for indel realignment, etc.
@@ -70,7 +70,7 @@ ref:
   # the URL where this can be downloaded, if public and easy to
   # get with wget.  If not, then you should hand-download
   # genome.fasta and genome.gff or genome.gtf
-  genome_url: https://github.com/eriqande/mega-non-model-wgs-snakeflow/raw/main/.test/genome/mini-test-genome.fna.gz
+  genome_path: /home/clazari/Projects/Chinook/WGS-chinook/Reference/ncbi_dataset/data/GCF_018296145.1/GCF_018296145.1_Otsh_v2.0_genomic.fna
   # if there is a GFF or GTF file, they have to have a .gff or
   # .gtf extension.  This where you put the URL for it
   gff_or_gtf_url: ""
